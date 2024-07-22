@@ -3,6 +3,7 @@ import 'package:flutter_application_api/src/screens/01_Home.dart';
 import 'package:flutter_application_api/src/screens/02_inicioSesionUsuario.dart';
 import 'package:flutter_application_api/src/screens/03_registroUsuario.dart';
 import 'package:flutter_application_api/src/screens/04_perfilUsuario.dart';
+import 'package:flutter_application_api/src/screens/06_MenuUser.dart';
 
 class API extends StatelessWidget {
   const API({super.key});
@@ -18,7 +19,8 @@ class API extends StatelessWidget {
         '/home': (context) => HomePage(),
         '/login': (context) => Login(),
         '/registro': (context) => PaginaRegistro(),
-        '/perfil':(context) => Perfilusuario()
+        '/perfil':(context) => Perfilusuario(),
+        '/users':(context)=> MenuUsers()
       },
     );
   }
