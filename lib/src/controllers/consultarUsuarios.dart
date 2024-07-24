@@ -1,13 +1,14 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-Future<Map<String, dynamic>> consultarUsuarios() async {
+Future<List<Users>> consultarUsuarios() async {
   final response =
       await http.get(Uri.parse('https://api-js-5wen.onrender.com/api/user'));
   if (response.statusCode == 200) {
-    return jsonDecode(response.body);
+    List<dynamic> jsonList = jsonDecode(response.body);
+    return jsonList.map((json) => Users.fromJson(json)).toList();
   } else {
-    throw Exception('Error al cargar los usuarios');
+    throw Exception('Failed to load jewelry products');
   }
 }
 

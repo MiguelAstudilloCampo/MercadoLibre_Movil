@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/users');
+                  Navigator.pushNamed(context, '/registro');
                 },
                 child: Text("Registrarse"),
                 style: ElevatedButton.styleFrom(

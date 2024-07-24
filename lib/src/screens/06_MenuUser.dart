@@ -37,7 +37,9 @@ class _MenuUsersState extends State<MenuUsers> {
             title: Text("Usuarios"),
             leading: Icon(Icons.connect_without_contact_rounded),
             trailing: Icon(Icons.arrow_circle_right_outlined),
-            onTap: () {},
+            onTap: () {
+              ModalConsultarUsuarios(context);
+            },
           ),
           ListTile(
             title: Text("Solicitudes"),
@@ -49,9 +51,7 @@ class _MenuUsersState extends State<MenuUsers> {
             title: Text("Informes"),
             leading: Icon(Icons.connect_without_contact_rounded),
             trailing: Icon(Icons.edit_document),
-            onTap: () {
-              ModalEventos(context);
-            },
+            onTap: () {},
           ),
         ],
       ),
