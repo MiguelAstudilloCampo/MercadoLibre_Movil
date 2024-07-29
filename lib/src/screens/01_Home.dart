@@ -66,7 +66,11 @@ class HomePage extends StatelessWidget {
                 ),
                 SizedBox(width: 10),
                 IconButton(onPressed: () {}, icon: Icon(Icons.favorite_border)),
-                IconButton(onPressed: () {}, icon: Icon(Icons.notifications))
+                IconButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/users');
+                    },
+                    icon: Icon(Icons.person))
               ],
             ),
             SizedBox(height: 12),

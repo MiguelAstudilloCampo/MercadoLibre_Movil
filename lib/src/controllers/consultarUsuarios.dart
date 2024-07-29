@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+//1. Hacer una solicitud de red usando el método get
 Future<List<Users>> consultarUsuarios() async {
   final response =
-      await http.get(Uri.parse('https://api-js-5wen.onrender.com/api/user'));
+      await http.get(Uri.parse('https://api-js-d8yf.onrender.com/api/user'));
   if (response.statusCode == 200) {
     List<dynamic> jsonList = jsonDecode(response.body);
     return jsonList.map((json) => Users.fromJson(json)).toList();
@@ -12,19 +13,25 @@ Future<List<Users>> consultarUsuarios() async {
   }
 }
 
+/////////////////////////////////
+//2. Convertir la respuesta de la web a un objeto dart
+
 class Users {
-  final String name;
-  final String email;
+  final String nombre;
+  final int edad;
+  final String correo;
 
   const Users({
-    required this.name,
-    required this.email,
+    required this.nombre,
+    required this.edad,
+    required this.correo,
   });
 
   factory Users.fromJson(Map<String, dynamic> json) {
     return Users(
-      name: json['name'],
-      email: json['email'],
+      nombre: json['nombre'] ?? '', // default to empty string if null
+      edad: json['edad'] ?? 0, // default to 0 if null
+      correo: json['correo'] ?? '', // default to empty string if null
     );
   }
 }

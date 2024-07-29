@@ -14,18 +14,20 @@ class _PaginadeRegistroState extends State<PaginadeRegistro> {
   String txtNombres = "";
   String txtEmail = "";
   String txtPassword = "";
+  int txtEdad = 0; // Variable para almacenar la edad
 
   Future<void> _registerUser() async {
-    final url = Uri.parse('https://api-js-5wen.onrender.com/api/user');
+    final url = Uri.parse('https://api-js-d8yf.onrender.com/api/user');
     final response = await http.post(
       url,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode(<String, String>{
-        'name': txtNombres,
-        'email': txtEmail,
-        'password': txtPassword,
+      body: jsonEncode(<String, dynamic>{
+        'nombre': txtNombres,
+        'correo': txtEmail,
+        'contrasenia': txtPassword,
+        'edad': txtEdad, // Enviar la edad en la solicitud
       }),
     );
 
@@ -108,6 +110,32 @@ class _PaginadeRegistroState extends State<PaginadeRegistro> {
                   SizedBox(height: 12.0),
                   TextFormField(
                     decoration: InputDecoration(
+                      labelText: "Edad", // Etiqueta para el campo de edad
+                      prefixIcon: Icon(Icons.calendar_today),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                    keyboardType: TextInputType
+                        .number, // Asegurarse de que el teclado sea numérico
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Ingrese edad";
+                      }
+                      if (int.tryParse(value) == null ||
+                          int.tryParse(value)! <= 0) {
+                        return "Ingrese una edad válida"; // Validación para asegurarse de que la edad sea un número positivo
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      txtEdad =
+                          int.parse(value!); // Guardar la edad como entero
+                    },
+                  ),
+                  SizedBox(height: 12.0),
+                  TextFormField(
+                    decoration: InputDecoration(
                       labelText: "Password",
                       prefixIcon: Icon(Icons.lock),
                       border: OutlineInputBorder(
@@ -123,6 +151,28 @@ class _PaginadeRegistroState extends State<PaginadeRegistro> {
                     },
                     onSaved: (value) {
                       txtPassword = value!;
+                    },
+                  ),
+                  SizedBox(
+                    height: 12.0,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Repita el Password",
+                      prefixIcon: Icon(Icons.lock),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                    obscureText: true,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Repita el password";
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      // Opcional: Comparar contraseñas para validar
                     },
                   ),
                   SizedBox(height: 24.0),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_api/src/controllers/consultarUsuarios.dart';
 
-ModalConsultarUsuarios(BuildContext context) {
+ModalEventos(BuildContext context) {
   consultarUsuarios().then((consultarUsuarios) {
     showModalBottomSheet(
         context: context,
@@ -21,8 +21,8 @@ ModalConsultarUsuarios(BuildContext context) {
               itemCount: consultarUsuarios.length,
               itemBuilder: (BuildContext context, int index) {
                 return ListTile(
-                  title: Text(consultarUsuarios[index].name),
-                  subtitle: Text(consultarUsuarios[index].name),
+                  title: Text(consultarUsuarios[index].nombre),
+                  subtitle: Text(consultarUsuarios[index].correo),
                   trailing: Icon(Icons.delete),
                 );
               },

@@ -1,11 +1,8 @@
 import 'package:flutter_application_api/src/controllers/consultarUsuarios.dart';
 import 'package:flutter/material.dart';
 
-ModalConsultarUsuarios(BuildContext context) {
-  dynamic fetchUsers;
+ModalUsuarios(BuildContext context) {
   consultarUsuarios().then((consultarUsuarios) {
-    fetchUsers = consultarUsuarios;
-
     showModalBottomSheet(
         context: context,
         builder: (context) {
@@ -20,8 +17,38 @@ ModalConsultarUsuarios(BuildContext context) {
               backgroundColor: Colors.red[100],
               title: Text('Usuarios'),
             ),
-            body: Center(
-              child: Text(fetchUsers[0].name),
+            body: ListView.builder(
+              itemCount: consultarUsuarios.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  elevation: 4.0, // Controla la sombra debajo de la tarjeta
+                  margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                        10.0), // Hace las esquinas redondeadas
+                  ),
+                  child: ListTile(
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.blueAccent,
+                      child: Text(
+                        consultarUsuarios[index]
+                            .nombre[0], // Letra inicial del nombre
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    title: Text(
+                      consultarUsuarios[index].nombre,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    subtitle: Text(
+                      'Correo: ${consultarUsuarios[index].correo}\nEdad: ${consultarUsuarios[index].edad}',
+                      style: TextStyle(color: Colors.black54),
+                    ),
+                  ),
+                );
+              },
             ),
           );
         });

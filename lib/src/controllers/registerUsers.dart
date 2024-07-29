@@ -2,18 +2,20 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+// Modificar el método para aceptar la edad
 Future<Map<String, dynamic>> _registerUser(
-    String name, String email, String password) async {
-  final url = Uri.parse('https://api-js-5wen.onrender.com/api/user');
+    String nombre, String correo, String contrasenia, int edad) async {
+  final url = Uri.parse('https://api-js-d8yf.onrender.com/api/user');
   final response = await http.post(
     url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
-    body: jsonEncode(<String, String>{
-      'name': name,
-      'email': email,
-      'password': password,
+    body: jsonEncode(<String, dynamic>{
+      'nombre': nombre,
+      'correo': correo,
+      'contrasenia': contrasenia,
+      'edad': edad,  // Incluir la edad como un entero
     }),
   );
 
@@ -28,18 +30,20 @@ class RegisterUserScreen extends StatelessWidget {
   final String txtNombres;
   final String txtEmail;
   final String txtPassword;
+  final int txtEdad;  // Agregar un campo para la edad
 
   const RegisterUserScreen({
     Key? key,
     required this.txtNombres,
     required this.txtEmail,
     required this.txtPassword,
+    required this.txtEdad,  // Agregar un campo para la edad
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Map<String, dynamic>>(
-      future: _registerUser(txtNombres, txtEmail, txtPassword),
+      future: _registerUser(txtNombres, txtEmail, txtPassword, txtEdad), // Pasar la edad
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {
