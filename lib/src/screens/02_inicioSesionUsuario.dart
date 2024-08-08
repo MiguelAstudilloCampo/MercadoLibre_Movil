@@ -22,6 +22,11 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Inicio de Sesion"),
+        backgroundColor: Colors.lightBlue[400],
+        foregroundColor: Colors.white,
+      ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Center(

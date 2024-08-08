@@ -1,42 +1,41 @@
+/// Ver Categorias
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-Future<List<Users>> consultarUsuarios() async {
-  final response = await http.get(Uri.parse('http://localhost:4000/api/user'));
+Future<List<Categorie>> consultarCategoria() async {
+  final response = await http
+      .get(Uri.parse('https://api-js-d8yf.onrender.com/api/categorie'));
   if (response.statusCode == 200) {
     List<dynamic> jsonList = jsonDecode(response.body);
-    return jsonList.map((json) => Users.fromJson(json)).toList();
+    return jsonList.map((json) => Categorie.fromJson(json)).toList();
   } else {
-    throw Exception('Failed to load users');
+    throw Exception('Failed to load categories');
   }
 }
 
-class Users {
-  final String id; // Cambiado de correo a id para usar como identificador
+class Categorie {
+  final String codigo;
   final String nombre;
-  final int edad;
-  final String correo;
 
-  const Users({
-    required this.id, // Añadido el campo id
+  const Categorie({
+    required this.codigo,
     required this.nombre,
-    required this.edad,
-    required this.correo,
   });
 
-  factory Users.fromJson(Map<String, dynamic> json) {
-    return Users(
-      id: json['_id'] ?? '',
+  factory Categorie.fromJson(Map<String, dynamic> json) {
+    return Categorie(
+      codigo: json['codigo'] ?? '',
       nombre: json['nombre'] ?? '',
-      edad: json['edad'] ?? 0,
-      correo: json['correo'] ?? '',
     );
   }
 }
 
-Future<Map<String, dynamic>> _registerUser(
+/// Registrar Categorias
+
+Future<Map<String, dynamic>> _registerCategory(
     String nombre, String correo, String contrasenia, int edad) async {
-  final url = Uri.parse('http://localhost:4000/api/user');
+  final url = Uri.parse('http://localhost:4000/api/category');
   final response = await http.post(
     url,
     headers: <String, String>{
@@ -44,9 +43,6 @@ Future<Map<String, dynamic>> _registerUser(
     },
     body: jsonEncode(<String, dynamic>{
       'nombre': nombre,
-      'correo': correo,
-      'contrasenia': contrasenia,
-      'edad': edad,
     }),
   );
   if (response.statusCode == 201) {
@@ -56,9 +52,9 @@ Future<Map<String, dynamic>> _registerUser(
   }
 }
 
-Future<void> eliminarUsuario(String idUsuario) async {
+Future<void> eliminarCategory(String idCategory) async {
   final response = await http.delete(
-    Uri.parse('http://localhost:4000/api/user/$idUsuario'),
+    Uri.parse('http://localhost:4000/api/category/$idCategory'),
     headers: {'Content-Type': 'application/json'},
   );
 
@@ -70,8 +66,8 @@ Future<void> eliminarUsuario(String idUsuario) async {
   }
 }
 
-Future<void> updateUser(String idUsuario, String nombre, String correo) async {
-  final url = Uri.parse('http://localhost:4000/api/user/$idUsuario');
+Future<void> updateCategory(String idCategory, String nombre) async {
+  final url = Uri.parse('http://localhost:4000/api/category/$idCategory');
   final response = await http.put(
     url,
     headers: <String, String>{
@@ -79,7 +75,6 @@ Future<void> updateUser(String idUsuario, String nombre, String correo) async {
     },
     body: jsonEncode(<String, dynamic>{
       'nombre': nombre,
-      'correo': correo,
     }),
   );
 

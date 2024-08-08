@@ -32,14 +32,12 @@ class _PaginadeRegistroState extends State<PaginadeRegistro> {
     );
 
     if (response.statusCode == 201) {
-      // Si el servidor devuelve un 201 CREATED, se muestra un mensaje de éxito.
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Registro exitoso')),
+        SnackBar(content: Text('Registro erroneo')),
       );
     } else {
-      // Si el servidor no devuelve un 201 CREATED, se lanza una excepción.
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error al registrar el usuario')),
+        SnackBar(content: Text('Registro exitoso')),
       );
     }
   }
@@ -47,6 +45,11 @@ class _PaginadeRegistroState extends State<PaginadeRegistro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Registro"),
+        backgroundColor: Colors.lightBlue[400],
+        foregroundColor: Colors.white,
+      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),

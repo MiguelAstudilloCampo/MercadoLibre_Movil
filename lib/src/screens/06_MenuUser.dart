@@ -16,7 +16,9 @@ class _MenuUsersState extends State<MenuUsers> {
         backgroundColor: Colors.lightBlue[400],
         foregroundColor: Colors.white,
         leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             icon: Icon(Icons.arrow_back, color: Colors.white)),
         title: Text(
           "Administrar usuarios",
