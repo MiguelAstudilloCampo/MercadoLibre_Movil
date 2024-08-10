@@ -2,7 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 Future<List<Users>> consultarUsuarios() async {
-  final response = await http.get(Uri.parse('http://localhost:4000/api/user'));
+  final response =
+      await http.get(Uri.parse('https://api-js-d8yf.onrender.com/api/user'));
   if (response.statusCode == 200) {
     List<dynamic> jsonList = jsonDecode(response.body);
     return jsonList.map((json) => Users.fromJson(json)).toList();
@@ -36,7 +37,7 @@ class Users {
 
 Future<Map<String, dynamic>> _registerUser(
     String nombre, String correo, String contrasenia, int edad) async {
-  final url = Uri.parse('http://localhost:4000/api/user');
+  final url = Uri.parse('https://api-js-d8yf.onrender.com/api/user');
   final response = await http.post(
     url,
     headers: <String, String>{
@@ -58,7 +59,7 @@ Future<Map<String, dynamic>> _registerUser(
 
 Future<void> eliminarUsuario(String idUsuario) async {
   final response = await http.delete(
-    Uri.parse('http://localhost:4000/api/user/$idUsuario'),
+    Uri.parse('https://api-js-d8yf.onrender.com/api/user/$idUsuario'),
     headers: {'Content-Type': 'application/json'},
   );
 
@@ -71,7 +72,7 @@ Future<void> eliminarUsuario(String idUsuario) async {
 }
 
 Future<void> updateUser(String idUsuario, String nombre, String correo) async {
-  final url = Uri.parse('http://localhost:4000/api/user/$idUsuario');
+  final url = Uri.parse('https://api-js-d8yf.onrender.com/api/user/$idUsuario');
   final response = await http.put(
     url,
     headers: <String, String>{

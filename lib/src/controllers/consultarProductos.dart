@@ -57,7 +57,7 @@ class Categorie {
 }
 
 Future<void> actualizarProducto(String idProduct, String nombre, String descripcion, int precio, String idCategoria) async {
-  final url = Uri.parse('http://localhost:4000/api/product/$idProduct');
+  final url = Uri.parse('https://api-js-d8yf.onrender.com/api/product/$idProduct');
   final response = await http.put(
     url,
     headers: <String, String>{
@@ -81,7 +81,7 @@ Future<void> actualizarProducto(String idProduct, String nombre, String descripc
 
 Future<void> eliminarProducto(String idProduct) async {
   final response = await http.delete(
-    Uri.parse('http://localhost:4000/api/product/$idProduct'),
+    Uri.parse('https://api-js-d8yf.onrender.com/api/product/$idProduct'),
     headers: {'Content-Type': 'application/json'},
   );
 
@@ -94,7 +94,7 @@ Future<void> eliminarProducto(String idProduct) async {
 }
 
 Future<void> registrarProducto(String nombre, int precio, String descripcion, String idCategoria) async {
-  final url = Uri.parse('http://localhost:4000/api/product');
+  final url = Uri.parse('https://api-js-d8yf.onrender.com/api/product');
   final response = await http.post(
     url,
     headers: <String, String>{

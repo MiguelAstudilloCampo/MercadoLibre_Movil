@@ -53,7 +53,7 @@ Future<Map<String, dynamic>> _registerCategory(String nombre) async {
 
 Future<void> eliminarCategory(String idCategory) async {
   final response = await http.delete(
-    Uri.parse('http://localhost:4000/api/category/$idCategory'),
+    Uri.parse('https://api-js-d8yf.onrender.com/api/categorie/$idCategory'),
     headers: {'Content-Type': 'application/json'},
   );
 
@@ -66,7 +66,8 @@ Future<void> eliminarCategory(String idCategory) async {
 }
 
 Future<void> updateCategory(String idCategory, String nombre) async {
-  final url = Uri.parse('http://localhost:4000/api/category/$idCategory');
+  final url =
+      Uri.parse('https://api-js-d8yf.onrender.com/api/categorie/$idCategory');
   final response = await http.put(
     url,
     headers: <String, String>{
