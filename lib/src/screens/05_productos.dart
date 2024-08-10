@@ -77,7 +77,8 @@ class ProductosPage extends StatelessWidget {
                     ),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: [],
+                      children: [
+                      ],
                     ),
                   ),
                 );

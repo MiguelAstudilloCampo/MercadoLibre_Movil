@@ -15,17 +15,17 @@ Future<List<Categorie>> consultarCategoria() async {
 }
 
 class Categorie {
-  final String codigo;
+  final String id;
   final String nombre;
 
   const Categorie({
-    required this.codigo,
+    required this.id,
     required this.nombre,
   });
 
   factory Categorie.fromJson(Map<String, dynamic> json) {
     return Categorie(
-      codigo: json['codigo'] ?? '',
+      id: json['id'] ?? '',
       nombre: json['nombre'] ?? '',
     );
   }
@@ -33,9 +33,8 @@ class Categorie {
 
 /// Registrar Categorias
 
-Future<Map<String, dynamic>> _registerCategory(
-    String nombre, String correo, String contrasenia, int edad) async {
-  final url = Uri.parse('http://localhost:4000/api/category');
+Future<Map<String, dynamic>> _registerCategory(String nombre) async {
+  final url = Uri.parse('https://api-js-d8yf.onrender.com/api/categorie');
   final response = await http.post(
     url,
     headers: <String, String>{
