@@ -48,7 +48,7 @@ Future<Map<String, dynamic>> _registerCategory(
   if (response.statusCode == 201) {
     return jsonDecode(response.body);
   } else {
-    throw Exception('Failed to register user');
+    throw Exception('Failed to register category');
   }
 }
 
@@ -59,10 +59,10 @@ Future<void> eliminarCategory(String idCategory) async {
   );
 
   if (response.statusCode == 200) {
-    print('Usuario eliminado exitosamente');
+    print('Categoria eliminado exitosamente');
   } else {
-    print('Error al eliminar el usuario: ${response.body}');
-    throw Exception('Error al eliminar el usuario');
+    print('Error al eliminar la categoria: ${response.body}');
+    throw Exception('Error al eliminar la categoria');
   }
 }
 
@@ -79,9 +79,9 @@ Future<void> updateCategory(String idCategory, String nombre) async {
   );
 
   if (response.statusCode == 200) {
-    print('Usuario actualizado exitosamente');
+    print('Categoria actualizado exitosamente');
   } else {
-    print('Error al actualizar el usuario: ${response.body}');
-    throw Exception('Error al actualizar el usuario');
+    print('Error al actualizar la categoria: ${response.body}');
+    throw Exception('Error al actualizar la categoria');
   }
 }

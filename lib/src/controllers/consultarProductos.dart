@@ -18,7 +18,7 @@ class Product {
   final String nombre;
   final int precio;
   final String descripcion;
-  final Categorie categoria; // Nueva propiedad
+  final Categorie categoria; 
 
   const Product({
     required this.id,
@@ -34,7 +34,7 @@ class Product {
       nombre: json['nombre'] ?? '',
       precio: json['precio'] ?? 0,
       descripcion: json['descripcion'] ?? '',
-      categoria: Categorie.fromJson(json['categoria']), // Convertir a objeto Categorie
+      categoria: Categorie.fromJson(json['categoria']), 
     );
   }
 }
@@ -56,7 +56,6 @@ class Categorie {
   }
 }
 
-// Actualizar un producto
 Future<void> actualizarProducto(String idProduct, String nombre, String descripcion, int precio, String idCategoria) async {
   final url = Uri.parse('http://localhost:4000/api/product/$idProduct');
   final response = await http.put(
@@ -68,7 +67,7 @@ Future<void> actualizarProducto(String idProduct, String nombre, String descripc
       'nombre': nombre,
       'descripcion': descripcion,
       'precio': precio,
-      'categoria': idCategoria, // Incluir la categoría al actualizar
+      'categoria': idCategoria, 
     }),
   );
 
@@ -80,7 +79,6 @@ Future<void> actualizarProducto(String idProduct, String nombre, String descripc
   }
 }
 
-// Eliminar un producto
 Future<void> eliminarProducto(String idProduct) async {
   final response = await http.delete(
     Uri.parse('http://localhost:4000/api/product/$idProduct'),
@@ -95,7 +93,6 @@ Future<void> eliminarProducto(String idProduct) async {
   }
 }
 
-// Registrar un nuevo producto
 Future<void> registrarProducto(String nombre, int precio, String descripcion, String idCategoria) async {
   final url = Uri.parse('http://localhost:4000/api/product');
   final response = await http.post(

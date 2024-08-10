@@ -221,7 +221,14 @@ class HomePage extends StatelessWidget {
                 ),
                 SizedBox(width: 10),
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/categories');
+                    },
+                    icon: Icon(Icons.category_outlined)),
+                IconButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/products');
+                    },
                     icon: Icon(Icons.production_quantity_limits_rounded)),
                 IconButton(
                     onPressed: () {

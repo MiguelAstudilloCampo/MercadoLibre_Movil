@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_api/src/screens/01_Home.dart';
 import 'package:flutter_application_api/src/screens/02_inicioSesionUsuario.dart';
 import 'package:flutter_application_api/src/screens/04_perfilUsuario.dart';
+import 'package:flutter_application_api/src/screens/05_productos.dart';
 import 'package:flutter_application_api/src/screens/06_MenuUser.dart';
+import 'package:flutter_application_api/src/screens/07_category.dart';
 import 'package:flutter_application_api/src/screens/3.1_RegistroUsuarios.dart';
 
 class API extends StatelessWidget {
@@ -20,7 +22,9 @@ class API extends StatelessWidget {
         '/login': (context) => Login(),
         '/registro': (context) => PaginadeRegistro(),
         '/perfil': (context) => Perfilusuario(),
-        '/users': (context) => MenuUsers()
+        '/users': (context) => MenuUsers(),
+        '/categories': (context) => CategoryPage(),
+        '/products': (context) => ProductosPage()
       },
     );
   }
