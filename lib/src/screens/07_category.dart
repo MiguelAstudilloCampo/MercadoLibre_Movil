@@ -59,6 +59,18 @@ class CategoryPage extends StatelessWidget {
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        IconButton(
+                          icon: Icon(Icons.update),
+                          onPressed: () {
+                            updateCategory(category.id, category.nombre);
+                          },
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: () {
+                            eliminarCategory(category.id);
+                          },
+                        ),
                       ],
                     ),
                   ),

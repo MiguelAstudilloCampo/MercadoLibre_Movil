@@ -78,6 +78,23 @@ class ProductosPage extends StatelessWidget {
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        IconButton(
+                          icon: Icon(Icons.update),
+                          onPressed: () {
+                            actualizarProducto(
+                                product.id,
+                                product.nombre,
+                                product.nombre,
+                                product.precio,
+                                product.descripcion);
+                          },
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: () {
+                            eliminarProducto(product.id);
+                          },
+                        ),
                       ],
                     ),
                   ),
