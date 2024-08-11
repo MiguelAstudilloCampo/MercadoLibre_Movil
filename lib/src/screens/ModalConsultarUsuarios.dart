@@ -105,8 +105,8 @@ void _showEliminarUsuario(
 
 void _refreshUserList(BuildContext context) async {
   final usuarios = await consultarUsuarios();
-  Navigator.of(context).pop(); // Cierra el modal actual
-  ModalUsuarios(context); // Vuelve a abrir el modal con la lista actualizada
+  Navigator.of(context).pop(); 
+  ModalUsuarios(context); 
 }
 
 void _showActualizarUsuario(

@@ -112,7 +112,6 @@ class HomePage extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {
                         return GestureDetector(
                           onTap: () {
-                            // Lógica para manejar el clic en una categoría
                           },
                           child: Card(
                             color: Colors.lightBlue[400],

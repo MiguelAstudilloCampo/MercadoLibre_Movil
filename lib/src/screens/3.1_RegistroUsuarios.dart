@@ -14,7 +14,7 @@ class _PaginadeRegistroState extends State<PaginadeRegistro> {
   String txtNombres = "";
   String txtEmail = "";
   String txtPassword = "";
-  int txtEdad = 0; // Variable para almacenar la edad
+  int txtEdad = 0; 
 
   Future<void> _registerUser() async {
     final url = Uri.parse('https://api-js-d8yf.onrender.com/api/user');
@@ -27,7 +27,7 @@ class _PaginadeRegistroState extends State<PaginadeRegistro> {
         'nombre': txtNombres,
         'correo': txtEmail,
         'contrasenia': txtPassword,
-        'edad': txtEdad, // Enviar la edad en la solicitud
+        'edad': txtEdad, 
       }),
     );
 
@@ -113,27 +113,27 @@ class _PaginadeRegistroState extends State<PaginadeRegistro> {
                   SizedBox(height: 12.0),
                   TextFormField(
                     decoration: InputDecoration(
-                      labelText: "Edad", // Etiqueta para el campo de edad
+                      labelText: "Edad", 
                       prefixIcon: Icon(Icons.calendar_today),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                     keyboardType: TextInputType
-                        .number, // Asegurarse de que el teclado sea numérico
+                        .number, 
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return "Ingrese edad";
                       }
                       if (int.tryParse(value) == null ||
                           int.tryParse(value)! <= 0) {
-                        return "Ingrese una edad válida"; // Validación para asegurarse de que la edad sea un número positivo
+                        return "Ingrese una edad válida"; 
                       }
                       return null;
                     },
                     onSaved: (value) {
                       txtEdad =
-                          int.parse(value!); // Guardar la edad como entero
+                          int.parse(value!); 
                     },
                   ),
                   SizedBox(height: 12.0),
@@ -175,7 +175,6 @@ class _PaginadeRegistroState extends State<PaginadeRegistro> {
                       return null;
                     },
                     onSaved: (value) {
-                      // Opcional: Comparar contraseñas para validar
                     },
                   ),
                   SizedBox(height: 24.0),
@@ -185,10 +184,9 @@ class _PaginadeRegistroState extends State<PaginadeRegistro> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          // Validar el formulario
                           _formKey.currentState!
-                              .save(); // Guardar el formulario si es válido
-                          _registerUser(); // Llamar a la función para registrar el usuario
+                              .save(); 
+                          _registerUser(); 
                         }
                       },
                       child: Text("Registrarse"),
